@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 赛事深度解读与视角</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9d7 0%, #f5d6b3 50%, #ecc39a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .page {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 42px;
+            padding: 2rem 2.5rem 3rem;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 30, 0.25);
+            transition: box-shadow 0.2s ease;
+        }
+
+        /* hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #2e1d0e;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(130deg, #b4652b, #7b4a1e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #543e28;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* 优势区 */
+        .advantages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 2.6rem 0 2.4rem;
+        }
+
+        .advantage-card {
+            background: white;
+            flex: 1 1 200px;
+            min-width: 170px;
+            padding: 1.5rem 0.8rem;
+            border-radius: 28px;
+            box-shadow: 0 6px 14px rgba(110, 60, 20, 0.08);
+            text-align: center;
+            transition: transform 0.18s, box-shadow 0.2s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px rgba(140, 75, 25, 0.12);
+        }
+
+        .advantage-card .emoji-badge {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3a2513;
+            margin-bottom: 0.25rem;
+        }
+
+        .advantage-card p {
+            font-size: 0.9rem;
+            color: #6a4e33;
+            line-height: 1.4;
+        }
+
+        /* 说明区 */
+        .insight {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 2.2rem 0 2.2rem;
+            box-shadow: 0 4px 16px rgba(100, 55, 10, 0.06);
+        }
+
+        .insight h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #362210;
+            margin-bottom: 1rem;
+            border-left: 5px solid #c9864b;
+            padding-left: 1rem;
+        }
+
+        .insight p {
+            color: #3f2c1a;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .insight strong {
+            color: #8b5629;
+        }
+
+        .insight .highlight-link {
+            margin-top: 0.6rem;
+            display: inline-block;
+            background: #f2dbc8;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+        }
+
+        .insight .highlight-link a {
+            color: #4f311a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .insight .highlight-link a:hover {
+            text-decoration: underline;
+            color: #613a1b;
+        }
+
+        /* FAQ摘要 */
+        .faq-summary {
+            background: white;
+            border-radius: 30px;
+            padding: 1.8rem 2rem 2rem;
+            margin: 2rem 0 2rem;
+            box-shadow: 0 4px 16px rgba(100, 55, 10, 0.06);
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #362210;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ebd9c8;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .question {
+            font-weight: 600;
+            color: #4d311b;
+            margin-bottom: 0.3rem;
+            font-size: 1.02rem;
+        }
+
+        .faq-item .answer {
+            color: #5d4330;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .faq-item .answer a {
+            color: #774b25;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .faq-item .answer a:hover {
+            color: #a16530;
+        }
+
+        /* 底部链接 */
+        .bottom-links {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #dcc7b2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem 2.4rem;
+            font-size: 0.95rem;
+        }
+
+        .bottom-links a {
+            color: #50351d;
+            text-decoration: none;
+            font-weight: 500;
+            background: rgba(255, 235, 215, 0.7);
+            padding: 0.35rem 1.4rem;
+            border-radius: 60px;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 1px 4px rgba(80, 40, 10, 0.05);
+        }
+
+        .bottom-links a:hover {
+            background: #f2d4b6;
+            transform: translateY(-1px);
+        }
+
+        .bottom-links .main-link {
+            background: #b87940;
+            color: white;
+            box-shadow: 0 4px 8px rgba(120, 60, 20, 0.2);
+        }
+
+        .bottom-links .main-link:hover {
+            background: #9e632f;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .page {
+                padding: 1.5rem 1.2rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .advantages {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .advantage-card {
+                flex: 1 1 auto;
+                min-width: unset;
+            }
+
+            .insight,
+            .faq-summary {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .bottom-links {
+                gap: 1rem;
+            }
+
+            .bottom-links a {
+                padding: 0.3rem 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .advantage-card {
+                flex: 1 1 170px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>⚽ <span>世界杯</span> · 不止是竞技</h1>
+        <p>从历史演进到战术变迁，从文化符号到全球脉搏——<br>一本属于世界球迷的知识索引。</p>
+    </div>
+
+    <!-- 优势区 / 解读维度 -->
+    <div class="advantages">
+        <div class="advantage-card">
+            <span class="emoji-badge">📜</span>
+            <h3>年代纵深</h3>
+            <p>1930 至今，回溯每届经典战役与规则变革</p>
+        </div>
+        <div class="advantage-card">
+            <span class="emoji-badge">🧠</span>
+            <h3>战术百科</h3>
+            <p>阵型演变、关键位置分析，理性拆解胜负逻辑</p>
+        </div>
+        <div class="advantage-card">
+            <span class="emoji-badge">🌍</span>
+            <h3>文化观察</h3>
+            <p>东道主叙事、球迷社群、足球与国家认同</p>
+        </div>
+        <div class="advantage-card">
+            <span class="emoji-badge">🔍</span>
+            <h3>数据视野</h3>
+            <p>纪录、趋势、统计背后的真实故事</p>
+        </div>
+    </div>
+
+    <!-- 说明区：知识型段落，自然引出链接 -->
+    <div class="insight">
+        <h2>世界杯：从乌拉圭到世界</h2>
+        <p>1930 年首届 <strong>世界杯</strong> 在乌拉圭揭幕，当时只有 13 支队伍参赛。九十余年来，这项赛事在赛制、球技与商业层面经历了巨大迭代。真正令它深入人心的力量，却始终来自那些意料之外的瞬间：1954 年的伯尔尼奇迹、1986 年马拉多纳的连过五人、2014 年格策的绝杀…… 每一个瞬间都在重塑足球的文化语义。</p>
+        <p>今天，我们谈论 <strong>世界杯</strong> 时不再只关注冠军归属——它成为一面棱镜，折射出地缘、经济与个体命运的交叉。如果你希望系统梳理这些层次，<a href="https://on-pro-fifaworldcup.com" style="color:#834f26; font-weight:600; text-decoration:underline;">世界杯</a> 这个平台聚合了赛事档案、深度分析与跨文化视角，适合从入门到资深的球迷持续探索。</p>
+        <div class="highlight-link">
+            📌 延伸阅读：<a href="https://on-pro-fifaworldcup.com">世界杯</a> · 赛事百科 · 战术笔记
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（融入提示与场景） -->
+    <div class="faq-summary">
+        <h2>❓ 常见思考点 · 摘要</h2>
+        <div class="faq-item">
+            <div class="question">⚡ 世界杯为什么能影响现代足球规则？</div>
+            <div class="answer">重大争议或精彩瞬间常推动规则修订：例如 1990 年引入回传限制、2018 年启用 VAR。每一届 <a href="https://on-pro-fifaworldcup.com">世界杯</a> 都是规则压力的试验场，促使理事会持续优化。</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">🌐 新兴足球地区能在世界杯上走多远？</div>
+            <div class="answer">近几届世界杯，摩洛哥、日本等队伍刷新了历史最好成绩。这背后是青训体系、战术适配与海外联赛经验的积累——<a href="https://on-pro-fifaworldcup.com">世界杯</a> 为这些成长提供了最直接的验证舞台。</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">📊 数据能完全解释世界杯爆冷吗？</div>
+            <div class="answer">模型可以量化控球率与预期进球，但无法预知临场心理、伤病与气候影响。正因如此，世界杯的不可预测性才如此迷人。综合数据与深度叙事，<a href="https://on-pro-fifaworldcup.com">世界杯</a> 内容库提供了多维度视角，帮你更全面理解这些冷门。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接（圆角按钮感） -->
+    <div class="bottom-links">
+        <a href="https://on-pro-fifaworldcup.com" class="main-link">世界杯</a>
+        <a href="https://on-pro-fifaworldcup.com">世界杯</a>
+        <a href="https://on-pro-fifaworldcup.com">世界杯</a>
+        <a href="https://on-pro-fifaworldcup.com">世界杯</a>
+    </div>
+
+    <!-- 极简脚注（不涉及诱导） -->
+    <div style="text-align: center; margin-top: 1.8rem; font-size: 0.8rem; color: #79604b; border-top: 1px dashed #dcc7b2; padding-top: 1rem;">
+        <span>基于公开信息整理 · 内容持续更新</span>
+    </div>
+</div>
+</body>
+</html>
